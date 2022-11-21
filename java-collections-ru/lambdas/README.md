@@ -1,49 +1,12 @@
 # Лямбды
 
-## Ссылки
-
-* [Метод flatMap()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#flatMap-java.util.function.Function-) — преобразует стрим стримов в один плоский стрим. В качестве аргумента принимает лямбду, преобразующую текущий элемент в поток.
-* [Метод toArray()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#toArray-java.util.function.IntFunction-) — возвращает массив, содержащий элементы потока.
-
-## main/java/exercise/App.java
+## main/java/exercise/Sorter.java
 
 ## Задачи
 
-Создайте класс `App` с публичным статическим методом `enlargeArrayImage()`. Метод принимает в качестве аргумента изображение в виде двумерного массива строк и возвращает двумерный массив, увеличенный в два раза (и по горизонтали и по вертикали).
+### src/main/java/exercise/Sorter.java
 
-```java
-String[][] image = {
-    {"*", "*", "*", "*"},
-    {"*", " ", " ", "*"},
-    {"*", " ", " ", "*"},
-    {"*", "*", "*", "*"},
-};
-System.out.println(Arrays.deepToString(image)); // =>
-// [
-//     [*, *, *, *],
-//     [*,  ,  , *],
-//     [*,  ,  , *],
-//     [*, *, *, *],
-// ]
-
-String[][] enlargedImage = App.enlargeArrayImage(image);
-System.out.println(Arrays.deepToString(enlargedImage)); // =>
-
-// [
-//     [*, *, *, *, *, *, *, *],
-//     [*, *, *, *, *, *, *, *],
-//     [*, *,  ,  ,  ,  , *, *],
-//     [*, *,  ,  ,  ,  , *, *],
-//     [*, *,  ,  ,  ,  , *, *],
-//     [*, *,  ,  ,  ,  , *, *],
-//     [*, *, *, *, *, *, *, *],
-//     [*, *, *, *, *, *, *, *],
-// ]
-```
-
-### Самостоятельная работа
-
-* В файле *main/java/exercise/Sorter.java* определите класс `Sorter` с публичным статическим методом `takeOldestMans()`. Метод принимает в качестве аргумента список `List` пользователей. Каждый пользователь представлен словарем `Map` со строковыми ключами и значениями.
+* В файле определите класс `Sorter` с публичным статическим методом `takeOldestMans()`. Метод принимает в качестве аргумента список `List` пользователей. Каждый пользователь представлен словарем `Map` со строковыми ключами и значениями.
 
   ```java
   Map<String, String> user = Map.of(
@@ -71,8 +34,46 @@ System.out.println(Arrays.deepToString(enlargedImage)); // =>
   System.out.println(men); // ["John Smith", "Andrey Petrov", "Vladimir Nikolaev"]
   ```
 
-* Напишите тесты для этого метода в файле *test/java/exercise/SorterTest.java*
+### Самостоятельная работа
+
+* В файле *src/main/java/exercise/App.java* создайте класс `App` с публичным статическим методом `enlargeArrayImage()`. Метод принимает в качестве аргумента изображение в виде двумерного массива строк и возвращает двумерный массив, увеличенный в два раза (и по горизонтали и по вертикали).
+
+```java
+String[][] image = {
+    {"*", "*", "*", "*"},
+    {"*", " ", " ", "*"},
+    {"*", " ", " ", "*"},
+    {"*", "*", "*", "*"},
+};
+
+System.out.println(Arrays.deepToString(image)); // =>
+// [
+//     [*, *, *, *],
+//     [*,  ,  , *],
+//     [*,  ,  , *],
+//     [*, *, *, *],
+// ]
+
+String[][] enlargedImage = App.enlargeArrayImage(image);
+System.out.println(Arrays.deepToString(enlargedImage)); // =>
+
+// [
+//     [*, *, *, *, *, *, *, *],
+//     [*, *, *, *, *, *, *, *],
+//     [*, *,  ,  ,  ,  , *, *],
+//     [*, *,  ,  ,  ,  , *, *],
+//     [*, *,  ,  ,  ,  , *, *],
+//     [*, *,  ,  ,  ,  , *, *],
+//     [*, *, *, *, *, *, *, *],
+//     [*, *, *, *, *, *, *, *],
+// ]
+```
+
+* В файле *src/test/java/exercise/AppTest.java* Напишите тесты, которые проверят работу этого метода
 
 ### Подсказки
+
+* [Метод flatMap()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#flatMap-java.util.function.Function-) — преобразует стрим стримов в один плоский стрим. В качестве аргумента принимает лямбду, преобразующую текущий элемент в поток
+* [Метод toArray()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#toArray-java.util.function.IntFunction-) — возвращает массив, содержащий элементы потока
 
 * Для преобразования потока в массив строк потребуется передать в метод `toArray()` ссылку на конструктор массива: `String[][]::new`
